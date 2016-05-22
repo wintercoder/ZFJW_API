@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>jw</display-name>
+  <servlet>
+    <servlet-name>JwServlet</servlet-name>
+    <servlet-class>com.guang.jw.servlet.JwServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JwServlet</servlet-name>
+    <url-pattern>/main.do</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TestParm</servlet-name>
+    <servlet-class>com.guang.jw.servlet.TestParm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestParm</servlet-name>
+    <url-pattern>/test.do</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>test.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
