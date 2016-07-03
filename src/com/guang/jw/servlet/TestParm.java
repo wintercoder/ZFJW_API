@@ -26,10 +26,15 @@ import org.apache.http.util.EntityUtils;
  */
 public class TestParm extends HttpServlet {
 	private final String url = "http://localhost:8080/jw/main.do";
-	private final String testSno = "";	
-	private final String testPwd = "";
+	private final String testSno = "1325110...";	
+	private final String testPwd = "";	//	TODO 用test.jsp测试的话改这里
 	private final String testXuenian = "2014-2015";
 	private final String testXueqi = "1";
+	
+	private static HttpClient httpclient;
+	static {
+		httpclient = HttpClientBuilder.create().build();
+	}
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -71,7 +76,6 @@ public class TestParm extends HttpServlet {
 
 	private String testLogin(){
 		HttpPost httpost = new HttpPost(url);
-		HttpClient httpclient = HttpClientBuilder.create().build();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("action", "login"));
 		nvps.add(new BasicNameValuePair("uname", testSno));
@@ -90,11 +94,9 @@ public class TestParm extends HttpServlet {
 	
 	private String testCurrentScore(){
 		HttpPost httpost = new HttpPost(url);
-		HttpClient httpclient = HttpClientBuilder.create().build();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("action", "curSemesterScore"));
 		nvps.add(new BasicNameValuePair("uname", testSno));
-		nvps.add(new BasicNameValuePair("upwd", testPwd));
 		httpost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
 		try {
 			String result = EntityUtils.toString( httpclient.execute(httpost).getEntity(),HTTP.UTF_8 );
@@ -109,11 +111,9 @@ public class TestParm extends HttpServlet {
 	
 	private String testCurrentKebiao(){
 		HttpPost httpost = new HttpPost(url);
-		HttpClient httpclient = HttpClientBuilder.create().build();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("action", "curSemesterKeBiao"));
 		nvps.add(new BasicNameValuePair("uname", testSno));
-		nvps.add(new BasicNameValuePair("upwd", testPwd));
 		httpost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
 		try {
 			String result = EntityUtils.toString( httpclient.execute(httpost).getEntity(),HTTP.UTF_8);
@@ -128,11 +128,9 @@ public class TestParm extends HttpServlet {
 
 	private String testCurrentJieShao() {
 		HttpPost httpost = new HttpPost(url);
-		HttpClient httpclient = HttpClientBuilder.create().build();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("action", "curSemesterJieShao"));
 		nvps.add(new BasicNameValuePair("uname", testSno));
-		nvps.add(new BasicNameValuePair("upwd", testPwd));
 		httpost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
 		try {
 			String result = EntityUtils.toString( httpclient.execute(httpost).getEntity(),HTTP.UTF_8);
@@ -147,11 +145,9 @@ public class TestParm extends HttpServlet {
 	
 	private String testScore(){
 		HttpPost httpost = new HttpPost(url);
-		HttpClient httpclient = HttpClientBuilder.create().build();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("action", "score"));
 		nvps.add(new BasicNameValuePair("uname", testSno));
-		nvps.add(new BasicNameValuePair("upwd", testPwd));
 		nvps.add(new BasicNameValuePair("xuenian", testXuenian));
 		nvps.add(new BasicNameValuePair("xueqi", testXueqi));
 		httpost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
@@ -167,11 +163,9 @@ public class TestParm extends HttpServlet {
 	}
 	private String testKeBiao(){
 		HttpPost httpost = new HttpPost(url);
-		HttpClient httpclient = HttpClientBuilder.create().build();
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		nvps.add(new BasicNameValuePair("action", "keBiao"));
 		nvps.add(new BasicNameValuePair("uname", testSno));
-		nvps.add(new BasicNameValuePair("upwd", testPwd));
 		nvps.add(new BasicNameValuePair("xuenian", testXuenian));
 		nvps.add(new BasicNameValuePair("xueqi", testXueqi));
 		httpost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
