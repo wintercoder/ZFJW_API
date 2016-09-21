@@ -1,5 +1,5 @@
 # 说明										
-1. 教务系统登陆页地址的`(S(hpuxisy320bpi2iunqzwd445))/`下称为sessionId，跟session作用相同，每次都会变化，一段时间后失效。
+1. 教务系统登陆页地址的`(S(hpuxisy320bpi2iunqzwd445))/`下称为cookieId，是系统为了防止浏览器禁用Cookie而存在URL上的，每次都会变化，一段时间后失效。
 
 	所以sessionId需要每次登陆前获取，获取方式：Get请求[http://jwxt2.gdufe.edu.cn:8080](http://jwxt2.gdufe.edu.cn:8080)会返回302跳转，header里的`location`有跳转链接，内含sessionId，需要禁止自动跳转才能获取。
 	
